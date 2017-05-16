@@ -1,0 +1,23 @@
+{
+    "name": "eurojet/yii2-job",
+    "description": "Component to yii2 for using cron job.",
+    "keywords": ["yii2", "job", "cron","crontab"],
+    "require": {
+        "php": ">=5.5.9",
+        "ext-intl": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.5",
+        "twig/extensions": "~1.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vincent Horvath",
+            "email": "vincent.horvath@temify.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"eurojet\\": ""}
+    }
+}
