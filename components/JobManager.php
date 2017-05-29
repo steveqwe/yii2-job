@@ -134,7 +134,8 @@ class JobManager
         }
 
         //delete all jobs with crontab entry that were not modified during the loop before
-        Job::deleteAll("`crontab` IS NOT NULL AND id=:id",[':id' => $ids]);
+        if(!empty($ids))
+            Job::deleteAll("`crontab` IS NOT NULL AND id=:id",[':id' => $ids]);
     }
 
     public function runJobs()
