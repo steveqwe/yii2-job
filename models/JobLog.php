@@ -5,18 +5,27 @@ use eurojet\job\models\_base\BaseJobLog;
 
 class JobLog extends BaseJobLog implements JobInterface
 {
+	public $progress;
+	public $job_id;
+	public $job_data;
+	public $identifier1;
+	public $identifier2;
+	public $identifier3;
+	public $identifier4;
+	public $queue;
+	public $token;
 	public static function model($className=__CLASS__) {
 		return parent::model($className);
 	}
 
-    public function beforeSave($insert)
+    	public function beforeSave($insert)
 	{
 		$this->finish_message = json_encode($this->finish_message);
 	
 		return parent::beforeSave($insert);
 	}
 
-    public function afterFind()
+   	public function afterFind()
 	{
 		$this->finish_message = json_decode($this->finish_message, true);
 		parent::afterFind();
