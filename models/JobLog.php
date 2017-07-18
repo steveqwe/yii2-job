@@ -18,12 +18,11 @@ class JobLog extends BaseJobLog implements JobInterface
 		return parent::model($className);
 	}
 
-    	public function beforeSave($insert)
-	{
-		$this->finish_message = json_encode($this->finish_message);
-	
-		return parent::beforeSave($insert);
-	}
+    	public function save($runValidation = true, $attributeNames = null)
+    	{
+        	$this->finish_message = json_encode($this->finish_message);
+        	return parent::save($runValidation, $attributeNames);
+   	}
 
    	public function afterFind()
 	{
