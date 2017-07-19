@@ -416,7 +416,7 @@ class Job extends BaseJob implements JobInterface
 		Yii::trace("log result", self::$logClass);
 		$log = new JobLog();
         $log->job_class = $this->job_class;
-        $log->start_time = $this->start_time;
+        $log->start_time = date('Y-m-d H:i:s');
         $log->job_status_id = $this->job_status_id;
         $log->finish_time = $this->timestampToDatabaseDate();
         $log->finish_message = json_encode($this->getFinishMessage());
