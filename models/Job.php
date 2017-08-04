@@ -356,7 +356,7 @@ class Job extends BaseJob implements JobInterface
 		$this->updateProgress($progress);
 	}
 
-	protected function _execute()
+	protected function execute()
 	{
 		throw new Exception("Illegal call to _execute. This method should have been overwritten");
 	}
@@ -366,20 +366,20 @@ class Job extends BaseJob implements JobInterface
 	    $this->changeToRunningStatus();
 	    $this->persist = false;
 	    $this->rollbackOpenTransaction = false;
-        $this->execute();
+            $this->_execute();
 	    return $this->job_status_id;
     }
 
 	/**
 	 * @return boolean Should return true when the job finished regularly
 	 */
-	public function execute()
+	public function _execute()
 	{
 		Yii::trace("execute", self::$logClass);
 
 		try
 		{
-			$result = $this->_execute();
+			$result = $this->execute();
 
 			//set default result when child execute did not set another status than RUNNING
 			if ($this->job_status_id == JobStatus::RUNNING)
