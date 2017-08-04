@@ -150,7 +150,7 @@ class JobManager
         if ($job)
         {
             Yii::trace("execute job {$job->id}");
-            $job->execute();
+            $job->_execute();
             $this->runJobs();
         }
     }
