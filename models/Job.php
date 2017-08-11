@@ -43,6 +43,15 @@ class Job extends BaseJob implements JobInterface
 			array('crontab', 'validateCrontab')
 		));
 	}
+	
+	  /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'Job_Cron';
+    }
+
 
     public function identifiers()
     {
