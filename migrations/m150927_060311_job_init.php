@@ -17,7 +17,7 @@ class m150927_060311_job_init extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%Job}}', [
+        $this->createTable('{{%Job_Cron}}', [
             'id' => Schema::TYPE_PK,
             'job_class'=> Schema::TYPE_STRING. ' NOT NULL',
             'job_data'=> Schema::TYPE_STRING,
@@ -28,7 +28,7 @@ class m150927_060311_job_init extends Migration
             'create_time'=> Schema::TYPE_DATETIME ,
             'update_time'=> Schema::TYPE_DATETIME
         ], $tableOptions);
-        $this->createTable('{{%Job_Log}}', [
+        $this->createTable('{{%Job_Cron_Log}}', [
             'id' => Schema::TYPE_PK,
             'job_class'=> Schema::TYPE_STRING. ' NOT NULL',
             'start_time'=> Schema::TYPE_DATETIME ,
@@ -50,8 +50,8 @@ class m150927_060311_job_init extends Migration
     }
     public function down()
     {
-        $this->dropTable('{{%Job_Log}}');
-        $this->dropTable('{{%Job}}');
+        $this->dropTable('{{%Job_Cron_Log}}');
+        $this->dropTable('{{%Job_Cron}}');
 
     }
 }
