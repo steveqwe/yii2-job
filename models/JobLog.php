@@ -17,6 +17,13 @@ class JobLog extends BaseJobLog implements JobInterface
 	public static function model($className=__CLASS__) {
 		return parent::model($className);
 	}
+	  /**
+	     * @inheritdoc
+	     */
+    	public static function tableName()
+    	{
+		return 'Job_Cron_Log';
+    	}
 
     	public function save($runValidation = true, $attributeNames = null)
     	{
