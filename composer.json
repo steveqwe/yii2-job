@@ -1,5 +1,5 @@
 {
-    "name": "eurojet/yii2-job",
+    "name": "eurojet/yii2-job-compatible",
     "description": "Component to yii2 for using cron job.",
     "keywords": ["yii2", "job", "cron","crontab"],
     "require": {
