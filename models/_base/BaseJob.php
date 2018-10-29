@@ -76,7 +76,7 @@ abstract class BaseJob extends ActiveRecord {
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'z_PRIMARY_KEY' => 'ID',
             'job_class' => 'Job Class',
             'job_data' => 'Job Data',
             'crontab' => 'Crontab',
@@ -93,7 +93,7 @@ abstract class BaseJob extends ActiveRecord {
     {
         //alias is needed to support foreign keys of the same model such as $_z_Parent_ID
         $query = self::find();
-        $query->select(['`job`.`id`','`job`.`job_class`','`job`.`job_data`','`job`.`crontab`','`job`.`planned_time`','`job`.`start_time`','`job`.`job_status_id`','`job`.`create_time`','`job`.`update_time`',\common\models\Job::labelDef('job').' label']);
+        $query->select(['`Job`.`z_PRIMARY_KEY`','`Job`.`job_class`','`Job`.`job_data`','`Job`.`crontab`','`Job`.`planned_time`','`Job`.`start_time`','`Job`.`job_status_id`','`Job`.`create_time`','`Job`.`update_time`',\common\models\Job::labelDef('Job').' label']);
 
         // add conditions that should always apply here
 
@@ -117,15 +117,15 @@ abstract class BaseJob extends ActiveRecord {
         }
 
         // grid filtering conditions
-        $query->andFilterWhere(['like', '`job`.`id`', $this->id])
-            ->andFilterWhere(['like', '`job`.`job_class`', $this->job_class])
-            ->andFilterWhere(['like', '`job`.`job_data`', $this->job_data])
-            ->andFilterWhere(['like', '`job`.`crontab`', $this->crontab])
-            ->andFilterWhere(['like', '`job`.`planned_time`', $this->planned_time])
-            ->andFilterWhere(['like', '`job`.`start_time`', $this->start_time])
-            ->andFilterWhere(['like', '`job`.`job_status_id`', $this->job_status_id])
-            ->andFilterWhere(['like', '`job`.`create_time`', $this->create_time])
-            ->andFilterWhere(['like', '`job`.`update_time`', $this->update_time]);
+        $query->andFilterWhere(['like', '`Job`.`z_PRIMARY_KEY`', $this->z_PRIMARY_KEY])
+            ->andFilterWhere(['like', '`Job`.`job_class`', $this->job_class])
+            ->andFilterWhere(['like', '`Job`.`job_data`', $this->job_data])
+            ->andFilterWhere(['like', '`Job`.`crontab`', $this->crontab])
+            ->andFilterWhere(['like', '`Job`.`planned_time`', $this->planned_time])
+            ->andFilterWhere(['like', '`Job`.`start_time`', $this->start_time])
+            ->andFilterWhere(['like', '`Job`.`job_status_id`', $this->job_status_id])
+            ->andFilterWhere(['like', '`Job`.`create_time`', $this->create_time])
+            ->andFilterWhere(['like', '`Job`.`update_time`', $this->update_time]);
 
 
         return $dataProvider;

@@ -67,7 +67,7 @@ abstract class BaseJobLog extends \yii\db\ActiveRecord {
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'z_PRIMARY_KEY' => 'ID',
             'job_class' => 'Job Class',
             'start_time' => 'Start Time',
             'finish_time' => 'Finish Time',
@@ -103,7 +103,7 @@ abstract class BaseJobLog extends \yii\db\ActiveRecord {
     {
         //alias is needed to support foreign keys of the same model such as $_z_Parent_ID
         $query = self::find();
-        $query->select(['`Job_Log`.`id`','`Job_Log`.`job_class`','`Job_Log`.`start_time`','`Job_Log`.`finish_time`','`Job_Log`.`job_status_id`','`Job_Log`.`finish_message`','`Job_Log`.`create_time`','`Job_Log`.`update_time`','`Job_Log`.`queue`','`Job_Log`.`progress`','`Job_Log`.`job_data`','`Job_Log`.`job_id`','`Job_Log`.`token`','`Job_Log`.`identifier1`','`Job_Log`.`identifier2`','`Job_Log`.`identifier3`','`Job_Log`.`identifier4`',\common\models\JobLog::labelDef('Job_Log').' label']);
+        $query->select(['`Job_Log`.`z_PRIMARY_KEY`','`Job_Log`.`job_class`','`Job_Log`.`start_time`','`Job_Log`.`finish_time`','`Job_Log`.`job_status_id`','`Job_Log`.`finish_message`','`Job_Log`.`create_time`','`Job_Log`.`update_time`','`Job_Log`.`queue`','`Job_Log`.`progress`','`Job_Log`.`job_data`','`Job_Log`.`job_id`','`Job_Log`.`token`','`Job_Log`.`identifier1`','`Job_Log`.`identifier2`','`Job_Log`.`identifier3`','`Job_Log`.`identifier4`',\common\models\JobLog::labelDef('Job_Log').' label']);
 
         // add conditions that should always apply here
 
@@ -127,7 +127,7 @@ abstract class BaseJobLog extends \yii\db\ActiveRecord {
         }
 
         // grid filtering conditions
-        $query->andFilterWhere(['like', '`Job_Log`.`id`', $this->id])
+        $query->andFilterWhere(['like', '`Job_Log`.`z_PRIMARY_KEY`', $this->z_PRIMARY_KEY])
             ->andFilterWhere(['like', '`Job_Log`.`job_class`', $this->job_class])
             ->andFilterWhere(['like', '`Job_Log`.`start_time`', $this->start_time])
             ->andFilterWhere(['like', '`Job_Log`.`finish_time`', $this->finish_time])

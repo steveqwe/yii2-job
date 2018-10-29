@@ -114,7 +114,7 @@ class JobManager
             }
             elseif ($model->job_status_id == JobStatus::RUNNING)
             {
-                $ids[] = $model->id;
+                $ids[] = $model->z_PRIMARY_KEY;
                 //do not sync a job which is currently running, we do not want to break it
                 continue;
             }
@@ -130,7 +130,7 @@ class JobManager
 
             $this->addJob($model, false);
 
-            $ids[] = $model->id;
+            $ids[] = $model->z_PRIMARY_KEY;
         }
 
         //delete all jobs with crontab entry that were not modified during the loop before
@@ -149,7 +149,7 @@ class JobManager
 
         if ($job)
         {
-            Yii::trace("execute job {$job->id}");
+            Yii::trace("execute job {$job->z_PRIMARY_KEY}");
             $job->_execute();
             $this->runJobs();
         }

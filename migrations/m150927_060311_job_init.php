@@ -18,7 +18,7 @@ class m150927_060311_job_init extends Migration
         }
 
         $this->createTable('{{%Job_Cron}}', [
-            'id' => Schema::TYPE_PK,
+            'z_PRIMARY_KEY' => Schema::TYPE_PK,
             'job_class'=> Schema::TYPE_STRING. ' NOT NULL',
             'job_data'=> Schema::TYPE_STRING,
             'crontab'=> Schema::TYPE_CHAR. '(128)',
@@ -29,7 +29,7 @@ class m150927_060311_job_init extends Migration
             'update_time'=> Schema::TYPE_DATETIME
         ], $tableOptions);
         $this->createTable('{{%Job_Cron_Log}}', [
-            'id' => Schema::TYPE_PK,
+            'z_PRIMARY_KEY' => Schema::TYPE_PK,
             'job_class'=> Schema::TYPE_STRING. ' NOT NULL',
             'start_time'=> Schema::TYPE_DATETIME ,
             'finish_time'=> Schema::TYPE_DATETIME ,

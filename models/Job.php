@@ -60,7 +60,7 @@ class Job extends BaseJob implements JobInterface
 
     public function getJobId()
     {
-        return $this->id;
+        return $this->z_PRIMARY_KEY;
     }
 
     public function getJobToken()
@@ -152,7 +152,7 @@ class Job extends BaseJob implements JobInterface
         if (is_array($this->job_data))
             $this->job_data = json_encode($jobData);
 
-        //Yii::trace("job data in before save {$this->id}: {$this->job_data}");
+        //Yii::trace("job data in before save {$this->z_PRIMARY_KEY}: {$this->job_data}");
 
         return parent::beforeSave($insert);
     }
@@ -229,7 +229,7 @@ class Job extends BaseJob implements JobInterface
         try {
             $this->onError();
         } catch (Exception $ex) {
-            Yii::log("Exception during job onError (ID {$this->id}): " . $ex->getMessage(), CLogger::LEVEL_ERROR);
+            Yii::log("Exception during job onError (ID {$this->z_PRIMARY_KEY}): " . $ex->getMessage(), CLogger::LEVEL_ERROR);
         }
     }
 
@@ -411,10 +411,10 @@ class Job extends BaseJob implements JobInterface
             return Yii::error('Saving a job log failed: ' . var_export($log->errors, true), 'error');
 
         if ($log->job_status_id == JobStatus::EXCEPTION)
-            Yii::error("Running job {$log->job_class} resulted in an exception: " . print_r($this->extractErrorMessageFromFinishMessage($log), true) . ". Please see log ID {$log->id} for details", 'error');
+            Yii::error("Running job {$log->job_class} resulted in an exception: " . print_r($this->extractErrorMessageFromFinishMessage($log), true) . ". Please see log ID {$log->z_PRIMARY_KEY} for details", 'error');
 
         if ($log->job_status_id == JobStatus::ERROR)
-            Yii::error("Running job {$log->job_class} resulted in an error: " . print_r($this->extractErrorMessageFromFinishMessage($log), true) . " Please see log ID {$log->id} for details", 'error');
+            Yii::error("Running job {$log->job_class} resulted in an error: " . print_r($this->extractErrorMessageFromFinishMessage($log), true) . " Please see log ID {$log->z_PRIMARY_KEY} for details", 'error');
 
     }
 
